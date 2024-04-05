@@ -2,7 +2,6 @@ const { MongoClient } = require('mongodb');
 const config = require('./config');
 const error = require('./middleware/error');
 
-// eslint-disable-next-line no-unused-vars
 const { dbUrl } = config;
 const client = new MongoClient(dbUrl);
 

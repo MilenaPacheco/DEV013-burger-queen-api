@@ -15,22 +15,32 @@ module.exports = (secret) => (req, resp, next) => {
 
   jwt.verify(token, secret, (err, decodedToken) => {
     if (err) {
+      console.error('Error to verifity token: ', err);
       return next(403);
     }
 
     // TODO: Verify user identity using `decodeToken.uid`
+    req.decodedToken = decodedToken;
+    console.log('Content token decoded: ', decodedToken);
+    next();
   });
 };
 
-module.exports.isAuthenticated = (req) => (
+module.exports.isAuthenticated = (req) => {
   // TODO: Decide based on the request information whether the user is authenticated
-  false
-);
+  if (req.decodedToken.uid) {
+    return true;
+  }
+  return false;
+};
 
-module.exports.isAdmin = (req) => (
+module.exports.isAdmin = (req) => {
   // TODO: Decide based on the request information whether the user is an admin
-  false
-);
+  if (req.decodedToken.role === 'admin') {
+    return true;
+  }
+  return false;
+};
 
 module.exports.requireAuth = (req, resp, next) => (
   (!module.exports.isAuthenticated(req))
