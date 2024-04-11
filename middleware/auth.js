@@ -28,7 +28,8 @@ module.exports = (secret) => (req, resp, next) => {
 
 module.exports.isAuthenticated = (req) => {
   // TODO: Decide based on the request information whether the user is authenticated
-  if (req.decodedToken.uid) {
+  if (req.decodedToken && req.decodedToken.uid) {
+    console.log("uid", req.decodedToken.uid);
     return true;
   }
   return false;

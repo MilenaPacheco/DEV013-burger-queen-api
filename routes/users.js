@@ -11,7 +11,7 @@ const {
   getUser,
   createUser,
   updateUser,
-  deleteUser
+  deleteUser,
 } = require('../controller/users');
 
 const initAdminUser = async (app, next) => {
