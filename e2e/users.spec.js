@@ -192,7 +192,7 @@ describe('PUT /users/:uid', () => {
   it('should update user when own data (password change)', () => (
     fetchAsTestUser('/users/test@test.test', {
       method: 'PUT',
-      body: { password: 'garmadon' },
+      body: { email: 'test@test.test', password: 'garmadon' },
     })
       .then((resp) => expect(resp.status).toBe(200))
       .then(() => fetch('/login', {
@@ -209,7 +209,7 @@ describe('PUT /users/:uid', () => {
   it('should update user when admin', () => (
     fetchAsAdmin('/users/test@test.test', {
       method: 'PUT',
-      body: { password: 'ohmygod' },
+      body: { email: 'test@test.test', password: 'ohmygod' },
     })
       .then((resp) => expect(resp.status).toBe(200))
       .then(() => fetch('/login', {

@@ -47,7 +47,9 @@ module.exports = {
       if (req.decodedToken.role !== 'admin' && req.decodedToken.uid !== req.params.uid && req.decodedToken.email !== req.params.uid) {
         return resp.status(403).json({ error: 'No tienes permisos para acceder a este recurso' });
       }
-  
+      /*true && (true || false)   true && true && false
+      true && true                    true && false
+      true                               false*/
       const regexCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       const db = await connect();
       const dbUsers = db.collection('users');
@@ -57,6 +59,10 @@ module.exports = {
       if (regexCorreo.test(req.params.uid)) {
         user = await dbUsers.findOne({ email: req.params.uid });
         console.log('correo ingresado', req.params.uid);
+        console.log('Role LOGIN', req.decodedToken.role);
+        console.log('Correo LOGIN', req.decodedToken.email);
+        console.log('Petición', req.decodedToken);
+
         if (!user) {
           return resp.status(404).json({ error: 'Correo no encontrado' });
         }
@@ -134,6 +140,7 @@ module.exports = {
   },
 
   updateUser: async (req, resp) => {
+    console.log("DECODETOKEN LOGIN", req.decodedToken.role);
     const userData = req.body;
     const newPassword = userData.password;
     const regexCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -149,22 +156,30 @@ module.exports = {
       if (!userData.email || !newPassword) {
         return resp.status(400).json({ error: 'Ingrese los campos requeridos' });
       }
-
       const db = await connect();
       const dbUsers = db.collection('users');
       let user;
+      console.log("Testeando parámetro como correo", req.params.uid)
       if (regexCorreo.test(req.params.uid)) {
         user = await dbUsers.findOne({ email: req.params.uid });
+        console.log("USER EN EMAIL",user)
       } else {
         user = await dbUsers.findOne({ _id: new ObjectId(req.params.uid) });
       }
+      console.log("verificar CORREO", regexCorreo.test(req.params.uid))
+      console.log("USER", user);
       if (!user) {
+        console.log("HOLA")
         return resp.status(404).json({ error: 'El usuario no existe' });
       }
       // Actualizar datos del usuario
-      const newPasswordHash = bcrypt.hashSync(userData.newPassword, 10);
+      const newPasswordHash = bcrypt.hashSync(newPassword, 10);
+      console.log("pass HASH",newPasswordHash);
       const updateData = { $set: { email: userData.email, password: newPasswordHash } };
-      const updateUser = await dbUsers.updateOne({ _id: new ObjectId(req.params.uid) }, updateData);
+      console.log("upDateDATA",updateData);
+      const updateUser = await dbUsers.updateOne({ _id: new ObjectId(user._id) }, updateData);
+      
+      console.log("upDateUSER",updateUser);
       if (updateUser.modifiedCount === 1) {
         return resp.status(200).json({ id: user._id, email: userData.email, role: user.role });
       }

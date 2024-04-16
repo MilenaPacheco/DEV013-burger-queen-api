@@ -21,7 +21,7 @@ module.exports = (secret) => (req, resp, next) => {
 
     // TODO: Verify user identity using `decodeToken.uid`
     req.decodedToken = decodedToken;
-    console.log('Content token decoded: ', decodedToken);
+    // console.log('Content token decoded: ', decodedToken);
     next();
   });
 };

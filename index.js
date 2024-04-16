@@ -4,6 +4,7 @@ const authMiddleware = require('./middleware/auth');
 const errorHandler = require('./middleware/error');
 const routes = require('./routes');
 const pkg = require('./package.json');
+require('dotenv').config();
 const connectdb = require('./connect');
 
 const { port, secret } = config;
@@ -30,3 +31,4 @@ routes(app, (err) => {
     console.info(`App listening on port ${port}`);
   });
 });
+module.exports = app;
