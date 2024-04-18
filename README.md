@@ -112,7 +112,7 @@ En la ruta '/users' se conecta al archivo controller/users.js para dar manejo a 
 4. Puedes ver el despliegue de la página [Aquí]([https://github.com/MilenaPacheco](https://dev-013-burger-queen-cdt7ab61s-milena-pachecos-projects.vercel.app/?vercelToolbarCode=9UDqM7MOpQ7Yr_C))
 
 ## Documentación API
-La documentación detallada de la API está disponible en [enlace-a-tu-documentacion](https://tu-enlace-a-la-documentacion-api.com).
+La documentación detallada de la API está disponible en [enlace a documentacion](https://app.swaggerhub.com/apis-docs/ssinuco/BurgerQueenAPI/2.0.0).
 
 ---
 Creado por [Milena Pacheco](https://github.com/MilenaPacheco)
