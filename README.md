@@ -34,8 +34,7 @@ La colección de usuarios almacena la información de los usuarios registrados e
   "name": "string",
   "email": "string",
   "password": "string",
-  "role": "string",
-  "createdAt": "Date"
+  "role": "string"
 }
 ```
 ### Estructura de Usuario
