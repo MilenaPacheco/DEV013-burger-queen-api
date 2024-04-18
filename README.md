@@ -37,7 +37,7 @@ La colección de usuarios almacena la información de los usuarios registrados e
   "role": "string",
   "createdAt": "Date"
 }
-
+```
 ### Estructura de Usuario
 A continuación se describen los campos utilizados para el modelo de usuario en nuestra base de datos:
 
