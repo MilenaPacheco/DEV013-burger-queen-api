@@ -21,6 +21,77 @@ Este proyecto consiste en una API construida con Node.js y Express para manejar 
 - Gestión de usuarios y roles.
 - Seguridad en las rutas para proteger ciertos recursos según los permisos de los usuarios.
 
+## Consideraciones técnicas
+
+Boilerplate o estructura del proyecto:
+
+```├── src
+│   ├── controllers
+│   │   ├── authController.ts
+│   │   ├── orderController.ts
+│   │   └── productController.ts
+│   ├── routes
+│   │   ├── authRoutes.ts
+│   │   ├── orderRoutes.ts
+│   │   └── productRoutes.ts
+│   ├── services
+│   │   ├── authService.ts
+│   │   ├── orderService.ts
+│   │   └── productService.ts
+│   ├── middleware
+│   │   ├── authMiddleware.ts
+│   │   └── errorHandler.ts
+│   ├── utils
+│   │   ├── database.ts
+│   │   └── errorHandlers.ts
+│   ├── prisma
+│   │   └── schema.prisma
+│   ├── index.ts
+│   └── app.ts
+├── tests
+│   ├── authController.spec.ts
+│   ├── orderController.spec.ts
+│   └── productController.spec.ts
+├── .env
+├── .gitignore
+├── README.md
+├── package.json
+└── tsconfig.json
+
+```
+## Descripción de Archivos y Carpetas
+
+### src
+Contiene el código fuente de la aplicación.
+
+#### controllers
+Controladores que manejan las solicitudes y respuestas.
+- **authController.ts**: Controlador para la autenticación de usuarios.
+- **orderController.ts**: Controlador para los endpoints relacionados con los pedidos.
+- **productController.ts**: Controlador para los endpoints relacionados con los productos.
+
+#### routes
+Define las rutas de la API.
+- **authRoutes.ts**: Rutas para los endpoints de autenticación.
+- **orderRoutes.ts**: Rutas para los endpoints de pedidos.
+- **productRoutes.ts**: Rutas para los endpoints de productos.
+
+#### services
+Lógica de negocio y comunicación con la base de datos.
+- **authService.ts**: Servicio para la lógica relacionada con la autenticación de usuarios.
+- **orderService.ts**: Servicio para la lógica relacionada con los pedidos.
+- **productService.ts**: Servicio para la lógica relacionada con los productos.
+
+#### middleware
+Middleware de la aplicación.
+- **authMiddleware.ts**: Middleware para la autenticación.
+- **errorHandler.ts**: Manejador de errores global.
+
+
+- **index.ts**: Punto de entrada principal de la aplicación.
+- **app.ts**: Configuración de la aplicación Express.
+
+
 ## Esquemas de Modelos de Datos
 
 En el proyecto utilicé MongoDB como base de datos NoSQL para almacenar los datos. A continuación, se presenta la estructura general de las colecciones y documentos principales:
