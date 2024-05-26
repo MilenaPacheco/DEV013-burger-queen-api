@@ -1,4 +1,5 @@
 # Burger Queen API - API con Node.js
+![zach-vessels-utMdPdGDc8M-unsplash](https://user-images.githubusercontent.com/110297/42118136-996b4a52-7bc6-11e8-8a03-ada078754715.jpg)
 ## Descripción
 Este proyecto consiste en una API construida con Node.js y Express para manejar el sistema de una aplicación de restaurante. Proporciona endpoints para gestionar usuarios, productos, pedidos y roles de usuarios.
 
